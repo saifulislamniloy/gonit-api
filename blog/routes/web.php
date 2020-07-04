@@ -28,3 +28,7 @@ $router->get('/notice', ['middleware'=>'auth','uses'=>'NoticeController@onAllSel
 $router->get('/blog', ['middleware'=>'auth','uses'=>'BlogController@onAllSelect']) ;
 $router->get('/blog/{blogId}', ['middleware'=>'auth','uses'=>'BlogController@onSelectDetails']) ;
 $router->get('/blog-detail', ['middleware'=>'auth','uses'=>'BlogController@onSelectHomePage']) ;
+
+
+//banner
+$router->get('/banner', ['middleware'=>'auth','uses'=>'BannerController@onAllSelect']) ;
