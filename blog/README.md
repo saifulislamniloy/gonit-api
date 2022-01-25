@@ -1,24 +1,41 @@
-# Lumen PHP Framework
+# Gonitcorcakendro Backend
+It is backend for a coaching center. 
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+# Stack
+- Lumen (PHP)
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+# Endpoints
+```
+$router->get('/course', ['middleware'=>'auth','uses'=>'CourseController@onAllSelect']) ;
+$router->get('/courseHome', ['middleware'=>'auth','uses'=>'CourseController@onSelectHomePage']) ;
+$router->get('/courseDetails/{courseId}', ['middleware'=>'auth','uses'=>'CourseController@onSelectDetails']) ;
+$router->get('/footer', ['middleware'=>'auth','uses'=>'FooterController@onAllSelect']) ;
+$router->post('/contact', ['middleware'=>'auth','uses'=>'ContactController@onContactSend']) ;
 
-## Official Documentation
+//video section
+$router->get('/class', ['middleware'=>'auth','uses'=>'ClassController@onSelectClassData']) ;
+$router->post('/class', ['middleware'=>'auth','uses'=>'ClassController@onNewClassData']) ;
+$router->get('/subject', ['middleware'=>'auth','uses'=>'SubjectController@onNewSubjectData']) ;
+$router->get('/subject/{classId}', ['middleware'=>'auth','uses'=>'SubjectController@onSelectSubjectDataFilterByClass']) ;
+$router->post('/subject', ['middleware'=>'auth','uses'=>'SubjectController@onNewSubjectData']) ;
+$router->get('/chapter/{subId}', ['middleware'=>'auth','uses'=>'ChapterController@onSelectChapterDataFilterBySubject']) ;
+$router->post('/chapter', ['middleware'=>'auth','uses'=>'ChapterController@onNewChapterData']) ;
+$router->get('/video/{chapId}', ['middleware'=>'auth','uses'=>'VideoController@onSelectVideoeDataFilterByChapter']) ;
+$router->post('/video', ['middleware'=>'auth','uses'=>'VideoController@onNewVideoData']) ;
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
 
-## Contributing
+//others
+$router->get('/others/{name}', ['middleware'=>'auth','uses'=>'OthersController@onSelectOthersData']) ;
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+//notice
+$router->get('/notice', ['middleware'=>'auth','uses'=>'NoticeController@onAllSelect']) ;
 
-## Security Vulnerabilities
+//blog
+$router->get('/blog', ['middleware'=>'auth','uses'=>'BlogController@onAllSelect']) ;
+$router->get('/blog/{blogId}', ['middleware'=>'auth','uses'=>'BlogController@onSelectDetails']) ;
+$router->get('/blog-detail', ['middleware'=>'auth','uses'=>'BlogController@onSelectHomePage']) ;
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+//banner
+$router->get('/banner', ['middleware'=>'auth','uses'=>'BannerController@onAllSelect']) ;
+```
